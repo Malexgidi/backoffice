@@ -55,7 +55,7 @@ const Paymentvendor = () =>{
             </div>
 
             <div className="bg-white h-[50px] ml-[-580px] justify-between   w-[1200px] grid grid-cols-2 items-center "> 
-            <h1 className="font-semibold pl-[20px] mt-2 text-lg"> Add Payment Vendor </h1>
+            <h1 className="font-semibold pl-[20px] mt-2 text-lg">  Payment Vendor </h1>
             <div className="flex mt-[8px] gap-3  ml-[180px] "> 
                    <div className="flex bg-[#F7F8FA] items-center ">
 
