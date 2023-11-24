@@ -13,7 +13,7 @@ function App() {
 
       <Route path='/' element={ <Navbar/>} />
       <Route path='/Bankdetails' element={  <Bankdetails/> } />
-     <Route path='/Paymentvendor' element={  <Paymentvendor/> } />
+     <Route path='/paymentvendor' element={  <Paymentvendor/> } />
 
        </Routes>
     </div>

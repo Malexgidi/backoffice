@@ -6,9 +6,23 @@ import {GrLogout} from 'react-icons/gr'
 import {HiOutlineHome} from 'react-icons/hi'
 import {GoHome} from 'react-icons/go'
 import { useState } from 'react';
+// import {useForm} from 'react-hook-form'
+// import {DevTool } from '@hookform/devtools'
+
+
+// let renderCount = 0;
+
+// type FormValues = {
+//     bankname: string,
+//     paymentApptypeId: string,
+//     bankname: string,
+// }
 
 
 const Paymentvendor = () =>{
+
+
+
 
     const data = [
         {
@@ -26,11 +40,44 @@ const Paymentvendor = () =>{
       
      ];
 
+
+
+
+// const form = useForm <FormValues> (data)
+// const { register, control, handleSubmit } = form
+
+// const onSubmit = (data: FormValues) => {
+//     console.log('Form submitted', data)
+// }
+
+
+
+
+     
+
      const [active, setActive] = useState  (0);  
 
+     const [formValue, setFormValue] = useState ({bankcode:'', paymentApptypeId:'', bankname:'' })
+     const [disable, setDisable] = useState ('typing')
+
+     const handleInput = (e) =>{
+        const {name, value} = e.target;
+        setFormValue({...formValue, [name]:value})
+     }
+
+     const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(formValue);
+      setDisable('submitted')
+     }
+
+
+
+
+
     return(
-        <div className="  max-w-[1400px] mx-auto grid grid-cols-2 w-full h-[800px] bg-[#F7F8FA]  ">
-                    <div className="bg-white h-[800px]   w-[60px] ">
+        <div className="  max-w-[1400px] mx-auto grid grid-cols-2 w-full h-[900px] bg-[#F7F8FA]  ">
+                    <div className="bg-white h-[900px]   w-[60px] ">
                 <div className=" items-center ml-3"> 
                 <img src={Logo} alt="" className="w-[30px] mt-4 mb-[150px]"  />
                 </div>
@@ -55,7 +102,7 @@ const Paymentvendor = () =>{
             </div>
 
             <div className="bg-white h-[50px] ml-[-580px] justify-between   w-[1200px] grid grid-cols-2 items-center "> 
-            <h1 className="font-semibold pl-[20px] mt-2 text-lg">  Payment Vendor </h1>
+            <h1 className="font-semibold pl-[20px] mt-2 text-lg"> Add Payment Vendor </h1>
             <div className="flex mt-[8px] gap-3  ml-[180px] "> 
                    <div className="flex bg-[#F7F8FA] items-center ">
 
@@ -78,105 +125,127 @@ const Paymentvendor = () =>{
                     </div>
                     <div className="mt-[-100px] ">
                         <h1 className="font-bold text-white items-center relative left-[300px]">Please fill in the correct details </h1>
-
+                      
                         <div>
-                            <form className="pl-[100px]">
+                            <form className="pl-[100px]" onSubmit={handleSubmit}   >
                                 <div className="py-3"> 
                                 <label  className="text-white mb-2 "> Bank Code </label> <br /> 
-                                    <input type="text" className="w-[600px] h-[60px] mt-2  " />
+                                    <input type="text" 
+                                    className="w-[600px] h-[60px] mt-2 "
+                                    name="bankcode"
+                                    value={formValue.bankcode}
+                                    onChange={handleInput}
+                               
+                                
+                                    />
                                     </div>
 
                                     <div className="py-3"> 
                                     <label  className="text-white"> Payment Application Type ID</label> <br />
-                                    <input type="text" className="w-[600px] h-[60px]  mt-2 " />
+                                    <input type="text"
+                                     className="w-[600px] h-[60px]  mt-2 " 
+                                     name="paymentApptypeId"
+                                     value={formValue.paymentApptypeId}
+                                     onChange={handleInput}
+                                   
+                                     />
                                     </div>
+                                  
 
                                     <div className="py-3">
-                                    <label className="text-white"> Bank Name</label> <br />
-                                    <input type="text" className="w-[600px] h-[60px] mt-2  " />
+                                    <label htmlFor="" className="text-white"> Bank Name</label> <br />
+                                    <input type="text" className="w-[600px] h-[60px] mt-2  " 
+                                   value={formValue.bankname}
+                                   onChange={handleInput}
+                                     name='bankname'
+                                    />
                                     </div>
-                            </form>
-                        </div>
-                        <div className="grid grid-cols-2 pl-[100px]">
-                            <div className=""> 
+                           
+                        <div className=" ">
+                            <div className="flex ">
                             <p className="text-white py-3 text-sm ">
                               Automated ?  
                             </p>
+                           
+                            <div className="flex items-center ps-3  ml-[390px] ">
+                <label htmlFor="default-radio-1" className="  py-3  ms-2 mr-2 text-sm text-white">Yes</label>
+                    <input id="default-radio-1"  onChange={handleInput} type="radio" value="Yes" name="automated" className="w-4 h-4 text-blue-600  bg-gray-100  rounded  focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2"/>
+                </div>
+
+                <div className="flex items-center ps-3 pl-[-390px] ">
+                <label htmlFor="default-radio-1" className="  py-3  ms-2 mr-2 text-sm text-white">No</label>
+                    <input id="no-radio-1"  onChange={handleInput} type="radio" value="No" name="automated"  className="w-4 h-4 text-blue-600 bg-gray-100  rounded  focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2"/>
+                </div>
+             
+                            </div>
+                   {/* need sub */}
+                            <div className="flex">
                             <p className="text-white py-3 text-sm ">
                             Need Subscription?
                             </p>
-                            <p className="text-white py-3 text-sm ">
+                            <div className="flex items-center ps-3 ml-[346px]">
+                <label htmlFor="default-radio-2" className=" py-3 ms-2 mr-2 text-sm font-medium text-white">Yes</label>
+                    <input id="default-radio-2"  onChange={handleInput} type="radio" value="Yes" name="subscription" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
+                </div>
+                <div className="flex items-center ps-3  pl-[-346px]">
+                <label htmlFor="default-radio-2" className=" py-3 ms-2 mr-2 text-sm font-medium text-white">No</label>
+                    <input id="no-radio-2"  onChange={handleInput} type="radio" value="No" name="subscription"  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
+                </div>
+                </div>
+
+     {/* active */}
+                <div className="flex"> 
+                <p className="text-white py-3 text-sm ">
                             Active? 
-                            </p>
+                </p>
+                <div className="flex items-center ps-3 ml-[426px]">
+                <label htmlFor="default-radio-3" className="py-3 ms-2 text-sm mr-2 font-medium text-white">Yes</label>
+                    <input id="default-radio-3"  onChange={handleInput} type="radio" value="Yes" name="active"  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
+                </div>
+                <div className="flex items-center ps-3 pl-[-425px]">
+                <label htmlFor="default-radio-3" className="py-3 ms-2 text-sm mr-2 font-medium text-white">No</label>
+                    <input id="no-radio-3"  onChange={handleInput} type="radio" value="No" name="active"  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
+                </div>
+                </div>
+                 {/* Notification query */}
+                            <div className="flex"> 
                             <p className="text-white py-3 text-sm ">
                             Notification Query?
                             </p>
+                            <div className="flex items-center ps-3 relative ml-[349px]">
+                <label htmlFor="default-radio-4" className="py-3 ms-2 mr-2 text-sm font-medium text-white">Yes</label>
+                    <input id="default-radio-4"  onChange={handleInput} type="radio" value="Yes" name="query"  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
+                </div>
+                <div className="flex items-center ps-3 pl-[-348px]">
+                <label htmlFor="default-radio-4" className="py-3 ms-2 mr-2 text-sm font-medium text-white">No</label>
+                    <input id="no-radio-4"  onChange={handleInput} type="radio" value="No" name="query" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
+                </div>
                             </div>
-                    <div className="flex pl-[115px]">    
-             <ul class="text-sm font-medium ">
-            <li class="">
-        <div class="flex items-center ps-3 ">
-                <label for="vue-checkbox" class="  py-3  ms-2 mr-2 text-sm text-white">Yes</label>
-                    <input id="vue-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100  rounded  focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2"/>
-                </div>
-            </li>
-            <li class="">
-                <div class="flex items-center ps-3">
-                <label for="react-checkbox" class=" py-3 ms-2 mr-2 text-sm font-medium text-white">Yes</label>
-                    <input id="react-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
-                </div>
-            </li>
-            <li class="">
-                <div class="flex items-center ps-3">
-                <label for="angular-checkbox" class="py-3 ms-2 text-sm mr-2 font-medium text-white">Yes</label>
-                    <input id="angular-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
-                </div>
-            </li>
-            <li class="">
-                <div class="flex items-center ps-3">
-                <label for="Yes" class="py-3 ms-2 mr-2 text-sm font-medium text-white">Yes</label>
-                    <input id="laravel-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
-                </div>
-            </li>
-        </ul>
-        {/* no */}
-        <ul class="text-sm font-medium ">
-            <li class="">
-        <div class="flex items-center ps-3 ">
-                <label for="vue-checkbox" class="  py-3  ms-2 mr-2 text-sm text-white">No</label>
-                    <input id="vue-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100  rounded  focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2"/>
-                </div>
-            </li>
-            <li class="">
-                <div class="flex items-center ps-3">
-                <label for="react-checkbox" class=" py-3 ms-2 mr-2 text-sm font-medium text-white">No</label>
-                    <input id="react-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
-                </div>
-            </li>
-            <li class="">
-                <div class="flex items-center ps-3">
-                <label for="angular-checkbox" class="py-3 ms-2 text-sm mr-2 font-medium text-white">No</label>
-                    <input id="angular-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
-                </div>
-            </li>
-            <li class="">
-                <div class="flex items-center ps-3">
-                <label for="Yes" class="py-3 ms-2 mr-2 text-sm font-medium text-white">No</label>
-                    <input id="laravel-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
-                </div>
-            </li>
-        </ul>
-        </div>
+
+                           
+                    
                         </div>
-                    </div>
-          <div className="relative left-[560px] pt-8 ">
-            <button className="bg-[#4CB944] px-12 py-3 text-white ">
+                 
+          <div className="relative left-[445px] pt-14 ">
+            <button className="bg-[#4CB944] px-12 py-3 text-white "
+            disabled={formValue.bankcode.length===0 ||
+                    formValue.paymentApptypeId.length===0 ||
+                    formValue.bankname.length===0 ||
+                    disable==='submitted'
+                          }
+            >
                 Submit
             </button>
           </div>
-                   </div>
+          
+         
+          </form>
+        </div>
+          </div>
+        </div>
+               
 
-                   </div>
+        </div>
           
         </div>
     )
