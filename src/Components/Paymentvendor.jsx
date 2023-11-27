@@ -41,18 +41,6 @@ const Paymentvendor = () =>{
      ];
 
 
-
-
-// const form = useForm <FormValues> (data)
-// const { register, control, handleSubmit } = form
-
-// const onSubmit = (data: FormValues) => {
-//     console.log('Form submitted', data)
-// }
-
-
-
-
      
 
      const [active, setActive] = useState  (0);  

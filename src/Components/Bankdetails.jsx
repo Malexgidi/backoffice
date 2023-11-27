@@ -14,6 +14,8 @@ import Fcmb from '../Images/Fcmb.png'
 import Union from '../Images/Union.png'
 import Globus from '../Images/Globus.png'
 import Fshb from '../Images/Fshb.png'
+import { BsPlus } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -38,7 +40,7 @@ const Bankdetails = ()=>{
      const [active, setActive] = useState  (0);  
 
     return(
-        <div className=" max-w-[1640px] mx-auto grid grid-cols-2 w-full h-[800px] bg-[#F7F8FA]  ">
+        <div className=" max-w-[1640px] mx-auto grid grid-cols-2 w-full h-[800px]  bg-[#F7F8FA]  ">
                <div className="bg-white h-[800px]   w-[60px] ">
                 <div className=" items-center ml-3"> 
                 <img src={Logo} alt="" className="w-[30px] mt-4 mb-[150px]"  />
@@ -64,7 +66,7 @@ const Bankdetails = ()=>{
             </div>
 
             <div className="bg-white h-[50px] ml-[-580px] justify-between   w-[1220px] grid grid-cols-2 items-center "> 
-            <h1 className="font-semibold pl-[20px] mt-2 text-lg"> Bank Details </h1>
+            <h1 className="font-semibold pl-[30px] mt-2 text-lg"> Bank Details </h1>
             <div className="flex mt-[8px] gap-3  ml-[180px] "> 
                    <div className="flex bg-[#F7F8FA] items-center ">
 
@@ -79,13 +81,13 @@ const Bankdetails = ()=>{
                    </button>
                    </div>
                   {/* Key accounts */}
-                   <div className="p-5 pt-7">
-                      <h1 className="font-semibold">
+                   <div className="p-5 pl-7 pt-7">
+                      <h1 className="font-semibold uppercase">
                         Key Accounts
                       </h1>
                       <div className="pt-[20px] grid grid-cols-4  justify-between ">
                         <div className="bg-[#114658] w-[250px] h-[120px] " >
-                            <div className="flex pl-[150px]  gap-2">
+                            <div className="flex pl-[200px]  gap-2">
                                 <div className="bg-gradient-to-b from-[#073140] to-[#07314000] w-[20px] h-[30px] ">
 
                                 </div>
@@ -93,20 +95,23 @@ const Bankdetails = ()=>{
 
                                 </div>
                             </div>
-                            <div className="pl-[40px]  ">
+                            <div className="pl-[40px] flex  ">
+                               <NavLink to="/Paymentvendor" className="duration-1000 scale-105 ease-out">
+                               <BsPlus className="w-[30px] h-[30px] ml-[-10px]"  style = {{ color: "white",}} />
+                               </NavLink>
 
-                                    <p className="text-white text-[10px] pl-">
+                                    <p className="text-white text-[12px] pt-[5px]">
                                     Add New Payment Vendor
                                     </p>
                                 </div>
                             
                         </div>
                         <div className="bg-[#DE4A09] w-[250px] h-[120px] ml-[150px] ">
-                            <p className="text-white p-4">
+                            <p className="text-white pl-[10px] pt-[8px] text-xl">
                             150.2M
                             </p>
                             <div className=" pl-[170px] pt-2">
-                            <img src={Gtbank} alt="" className="w-[20px] ml-[35px]" />
+                            <img src={Gtbank} alt="" className="w-[20px] ml-[30px] mt-4" />
                           <p className="text-white">
                             GTBank
                           </p>
@@ -115,71 +120,71 @@ const Bankdetails = ()=>{
                         </div>
 
                         <div className="bg-[#03476E] w-[250px] h-[120px] ml-[300px] ">
-                            <p className="text-white p-4">
+                            <p className="text-white pl-[10px] pt-[8px] text-xl">
                             150.2M
                             </p>
                             <div className=" pl-[100px] mb-[60px]">
-                            <img src={Firstbank} alt="" className="w-[65px] ml-[60px] mb-[50px] " />
+                            <img src={Firstbank} alt="" className="w-[85px] ml-[55px]  " />
                          
                             </div>
                           
                         </div>
 
                         <div className="bg-white w-[250px] h-[120px] ml-[450px]  ">
-                            <p className="text-[#FF2123] p-4">
+                            <p className="text-[#FF2123] pl-[10px] pt-[8px] text-xl">
                             150.2M
                             </p>
                             <div className=" pl-[110px]  mb-[30px] ">
-                            <img src={Zenith} alt="" className="w-[60px] ml-[60px]" />
+                            <img src={Zenith} alt="" className="w-[80px] ml-[55px]" />
                           
                             </div>
                           
                         </div>
                       </div>
                      {/* other accounts */}
-                      <div className="pt-10">
-                      <h1 className="font-semibold">
+                      <div className="pt-14">
+                      <h1 className="font-semibold uppercase">
                         Other accounts
                       </h1>
                       <div className="pt-[20px] grid grid-cols-4  justify-between ">
                         <div className="bg-[#D32E12] w-[250px] h-[120px] " >
-                            <p className="text-white p-4">
+                            <p className="text-white pl-[10px] pt-[8px] text-xl">
                             150.2M
                             </p>
                             <div className=" pl-[100px] pt-2">
-                            <img src={UBA} alt="" className="w-[70px] ml-[35px]" />
+                            <img src={UBA} alt="" className="w-[85px] ml-[45px]" />
                          
                             </div>
                              
                         </div>
                         <div className="bg-[#FFFFFF] w-[250px] h-[120px] ml-[150px] ">
-                            <p className="text-[#305493] p-4">
+                            <p className="text-[#305493] pl-[10px] pt-[8px] text-xl">
                             150.2M
                             </p>
                             <div className=" pl-[100px] ">
-                            <img src={Access} alt="" className="w-[75px] ml-[55px]" />
+                            <img src={Access} alt="" className="w-[95px] ml-[55px]" />
                        
                             </div>
                           
                         </div>
 
                         <div className="bg-[#5D2683] w-[250px] h-[120px] ml-[300px] ">
-                            <p className="text-white p-4">
+                            <p className="text-white pl-[10px] pt-[8px] text-xl">
                             150.2M
                             </p>
                             <div className=" pl-[100px] ">
-                            <img src={Fcmb} alt="" className="w-[65px] ml-[60px] mb-[50px] " />
+                            <img src={Fcmb} alt="" className="w-[75px] ml-[60px] mb-[50px] " />
                          
                             </div>
                           
                         </div>
 
                         <div className="bg-white w-[250px] h-[120px] ml-[450px]  ">
-                            <p className="text-[#02B1F1] p-4">
+                            <p className="text-[#02B1F1] pl-[10px] pt-[8px] text-xl">
                             150.2M
                             </p>
                             <div className=" pl-[100px]  mb-[30px] ">
-                            <img src={Union} alt="" className="w-[60px] ml-[60px]" />
+                            <img src={Union} alt="" className="w-[80px] ml-[60px] mt-4" />
                           
                             </div>
                           
@@ -191,22 +196,22 @@ const Bankdetails = ()=>{
 
                       <div className="grid grid-cols-2 pt-6 ">
                       <div className="bg-white w-[250px] h-[120px]   ">
-                            <p className="text-[#ED1E32] p-4">
+                            <p className="text-[#ED1E32] pl-[10px] pt-[8px] text-xl">
                             150.2M
                             </p>
                             <div className=" pl-[110px]  mb-[30px] ">
-                            <img src={Globus} alt="" className="w-[60px] ml-[60px]" />
+                            <img src={Globus} alt="" className="w-[80px] ml-[60px]" />
                           
                             </div>
                           
                         </div>
                         
                         <div className="bg-white w-[250px] h-[120px] ml-[10px]  ">
-                            <p className="text-[#103A94] p-4">
+                            <p className="text-[#103A94] pl-[10px] pt-[8px] text-xl">
                             150.2M
                             </p>
                             <div className=" pl-[110px]  mb-[30px] ">
-                            <img src={Fshb} alt="" className="w-[60px] ml-[60px]" />
+                            <img src={Fshb} alt="" className="w-[80px] ml-[55px]" />
                           
                             </div>
                           
