@@ -64,7 +64,7 @@ const Paymentvendor = () =>{
 
 
     return(
-        <div className="  max-w-[1400px] mx-auto grid grid-cols-2 w-full h-[900px] bg-[#F7F8FA]  ">
+        <div style={{ overflow: "hidden" }} className="max-w-[1640px] mx-auto grid grid-cols-2 w-full h-[900px] bg-[#F7F8FA]  ">
                     <div className="bg-white h-[900px]   w-[60px] ">
                 <div className=" items-center ml-3"> 
                 <img src={Logo} alt="" className="w-[30px] mt-4 mb-[150px]"  />
@@ -123,6 +123,7 @@ const Paymentvendor = () =>{
                                     name="bankcode"
                                     value={formValue.bankcode}
                                     onChange={handleInput}
+                                    placeholder="Bank code"
                                
                                 
                                     />
@@ -171,11 +172,11 @@ const Paymentvendor = () =>{
                             <p className="text-white py-3 text-sm ">
                             Need Subscription?
                             </p>
-                            <div className="flex items-center ps-3 ml-[346px]">
+                            <div className="flex items-center ps-3 ml-[348.5px]">
                 <label htmlFor="default-radio-2" className=" py-3 ms-2 mr-2 text-sm font-medium text-white">Yes</label>
-                    <input id="default-radio-2"  onChange={handleInput} type="radio" value="Yes" name="subscription" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
+                    <input id="default-radio-2" style={{placeholder: "padding"}}  onChange={handleInput} type="radio" value="Yes" name="subscription" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
                 </div>
-                <div className="flex items-center ps-3  pl-[-346px]">
+                <div className="flex items-center ps-3  pl-[-347px]">
                 <label htmlFor="default-radio-2" className=" py-3 ms-2 mr-2 text-sm font-medium text-white">No</label>
                     <input id="no-radio-2"  onChange={handleInput} type="radio" value="No" name="subscription"  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 "/>
                 </div>
