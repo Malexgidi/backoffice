@@ -47,6 +47,7 @@ const Paymentvendor = () =>{
 
      const [formValue, setFormValue] = useState ({bankcode:'', paymentApptypeId:'', bankname:'' })
      const [disable, setDisable] = useState ('typing')
+     const [formErrors, setFormErrors] = useState({})
 
      const handleInput = (e) =>{
         const {name, value} = e.target;
@@ -57,14 +58,24 @@ const Paymentvendor = () =>{
       e.preventDefault();
       console.log(formValue);
       setDisable('submitted')
+      setFormErrors(validate(formValue))
+     }
+
+     const validate = (values) => {
+       const errors = {}
+        
      }
 
 
 
 
 
+
     return(
+      
+
         <div style={{ overflow: "hidden" }} className="max-w-[1640px] mx-auto grid grid-cols-2 w-full h-[900px] bg-[#F7F8FA]  ">
+            
                     <div className="bg-white h-[900px]   w-[60px] ">
                 <div className=" items-center ml-3"> 
                 <img src={Logo} alt="" className="w-[30px] mt-4 mb-[150px]"  />
@@ -106,11 +117,15 @@ const Paymentvendor = () =>{
                    </div>
 
                    {/* payment vendor */}
+                   {/* <div>
+                    <pre> {JSON.stringify(formValue, undefined, 2)} </pre>
+                    </div> */}
 
-                   <div className="bg-[#114658] w-[808px] h-[750px] relative top-12 ml-[150px] ">
+                   <div className="bg-[#114658] w-[808px] h-[750px] relative top-12 ml-[180px] ">
                     <div className="bg-gradient-to-b from-[#073140] to-[#07314000] w-[92px] h-[157px] relative left-[709px]">
 
                     </div>
+                    
                     <div className="mt-[-100px] ">
                         <h1 className="font-bold text-white items-center relative left-[300px]">Please fill in the correct details </h1>
                       
@@ -123,8 +138,6 @@ const Paymentvendor = () =>{
                                     name="bankcode"
                                     value={formValue.bankcode}
                                     onChange={handleInput}
-                                    placeholder="Bank code"
-                               
                                 
                                     />
                                     </div>
