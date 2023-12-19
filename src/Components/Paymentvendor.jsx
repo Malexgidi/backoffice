@@ -5,7 +5,7 @@ import { TbClock2 } from 'react-icons/tb'
 import {GrLogout} from 'react-icons/gr'
 import {HiOutlineHome} from 'react-icons/hi'
 import {GoHome} from 'react-icons/go'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // import {useForm} from 'react-hook-form'
 // import {DevTool } from '@hookform/devtools'
 
@@ -48,22 +48,43 @@ const Paymentvendor = () =>{
      const [formValue, setFormValue] = useState ({bankcode:'', paymentApptypeId:'', bankname:'' })
      const [disable, setDisable] = useState ('typing')
      const [formErrors, setFormErrors] = useState({})
+     const [isSubmit, setIsSubmit] = useState(false)
 
      const handleInput = (e) =>{
         const {name, value} = e.target;
         setFormValue({...formValue, [name]:value})
      }
 
+
+     useEffect(()=> {
+       
+        
+        if(Object.keys(formErrors).length === 0 && isSubmit) {
+            // console.log(formValue);
+        }
+     }, [formErrors, formValue, isSubmit]);
+     
+
      const handleSubmit = (e) => {
       e.preventDefault();
       console.log(formValue);
-      setDisable('submitted')
-      setFormErrors(validate(formValue))
+      setDisable('submitted');
+      setFormErrors(validate(formValue));
+      setIsSubmit(true);
      }
 
      const validate = (values) => {
        const errors = {}
-        
+        if(!values.bankcode){
+            errors.bankcode = "bank code is required";
+        }
+        if(!values.paymentApptypeId){
+            errors.paymentApptypeId = "paymentAppTypeId is required";
+        }
+        if(!values.bankname){
+            errors.bankname = "bank name is required";
+        }
+        return errors;
      }
 
 
@@ -138,6 +159,7 @@ const Paymentvendor = () =>{
                                     name="bankcode"
                                     value={formValue.bankcode}
                                     onChange={handleInput}
+                                    placeholder="bankcode"
                                 
                                     />
                                     </div>
@@ -145,10 +167,11 @@ const Paymentvendor = () =>{
                                     <div className="py-3"> 
                                     <label  className="text-white"> Payment Application Type ID</label> <br />
                                     <input type="text"
-                                     className="w-[600px] h-[60px]  mt-2 " 
+                                     className="w-[600px] h-[60px]  mt-2 placeholder-px-5 " 
                                      name="paymentApptypeId"
                                      value={formValue.paymentApptypeId}
                                      onChange={handleInput}
+                                     placeholder="Payment Application Type ID"
                                    
                                      />
                                     </div>
@@ -156,14 +179,16 @@ const Paymentvendor = () =>{
 
                                     <div className="py-3">
                                     <label htmlFor="" className="text-white"> Bank Name</label> <br />
-                                    <input type="text" className="w-[600px] h-[60px] mt-2  " 
+                                    <input type="text" className="w-[600px] h-[60px] mt-2 placeholder-pl-[30px]  " 
                                    value={formValue.bankname}
                                    onChange={handleInput}
                                      name='bankname'
+                                     placeholder="bankname"
+                                   
                                     />
                                     </div>
                            
-                        <div className=" ">
+                     
                             <div className="flex ">
                             <p className="text-white py-3 text-sm ">
                               Automated ?  
@@ -226,10 +251,10 @@ const Paymentvendor = () =>{
 
                            
                     
-                        </div>
+                     
                  
           <div className="relative left-[445px] pt-14 ">
-            <button className="bg-[#4CB944] px-12 py-3 text-white "
+            <button className="bg-[#4CB944] px-12 py-3 text-white cursor-pointer "
             disabled={formValue.bankcode.length===0 ||
                     formValue.paymentApptypeId.length===0 ||
                     formValue.bankname.length===0 ||

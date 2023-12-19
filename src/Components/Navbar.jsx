@@ -6,6 +6,7 @@ import { TbClock2 } from 'react-icons/tb'
 import {GrLogout} from 'react-icons/gr'
 import {HiOutlineHome} from 'react-icons/hi'
 import {GoHome} from 'react-icons/go'
+import MyModal from '../Components/MyModal'
 
 
 
@@ -39,6 +40,10 @@ const Navbar = () =>{
 
  const [active, setActive] = useState  (0);  
 //  const [logout, setLogout] = useState (0) 
+const [showmodal, setShowmodal] = useState(false);
+
+const handleOnClose = ()=> setShowmodal(false); 
+
 
     return(
         
@@ -97,8 +102,9 @@ const Navbar = () =>{
                       <h1 className="font-semibold p-8 ml-[12px] text-[20px]">
                         Order Details
                       </h1>
-                      <button className="bg-[#4CB944] mr-[47px]  px-[10px] m-8 my-7 text-[10px] text-white"> Reprocess Order </button>
+                      <button onClick={()=> setShowmodal(true) } className="bg-[#4CB944] mr-[47px]  px-[10px] m-8 my-7 text-[10px] text-white hover:scale-105 transition"> Reprocess Order </button>
                     </div>
+                    <MyModal onClose={handleOnClose} visible={showmodal} />
                     {/* under order */}
                     <div className="bg-[#114658]  w-[1070px] ml-[45px] h-[130px]">
                         <div className="flex justify-between p-10 ">
